@@ -1,0 +1,16 @@
+
+    # Build course list HTML for course management card
+    course_list_html = ''.join(
+        f'''<div class="record-item" id="courseRow-{c['id']}" style="align-items:center;flex-wrap:wrap">
+<span style="flex:1;min-width:80px"><b id="courseCodeLabel-{c['id']}">{c['course_code']}</b></span>
+<span style="flex:2;min-width:120px" id="courseNameLabel-{c['id']}">{c['course_name']}</span>
+<span style="color:#999;font-size:12px;margin-right:8px">{c['student_count']}人</span>
+<input id="courseCodeInput-{c['id']}" value="{c['course_code']}" style="display:none;flex:1;min-width:80px;margin:0;padding:6px 10px;font-size:14px">
+<input id="courseNameInput-{c['id']}" value="{c['course_name']}" style="display:none;flex:2;min-width:120px;margin:0;padding:6px 10px;font-size:14px">
+<span style="display:flex;gap:8px">
+<button onclick="startEditCourse({c['id']})" id="editCourseBtn-{c['id']}" style="padding:4px 12px;background:#3498db;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px">编辑</button>
+<button onclick="cancelEditCourse({c['id']})" id="cancelCourseBtn-{c['id']}" style="display:none;padding:4px 12px;background:#999;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px">取消</button>
+<button onclick="saveEditCourse({c['id']})" id="saveCourseBtn-{c['id']}" style="display:none;padding:4px 12px;background:#27ae60;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px">保存</button>
+<button onclick="deleteCourse({c['id']},'{c['course_name']}')" style="padding:4px 12px;background:#e74c3c;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px">删除</button>
+</span>
+</div>''' for c in courses)
